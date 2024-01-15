@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  api:
+    image: node:20.11
+    command: yarn start:dev
+    working_dir: /app
+    volumes:
+      - $PWD:/app
+    ports:
+      - "8080:8080"
+
+  db:
+    image: postgres:15.2
+    environment:
+      POSTGRES_DB: "app"
+      POSTGRES_USER: "appuser"
+      POSTGRES_PASSWORD: "apppass"
+    ports:
+      - "5432:5432"

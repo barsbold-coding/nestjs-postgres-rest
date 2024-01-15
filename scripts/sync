@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+command -v git >/dev/null 2>&1 || { echo -e "\033[31mgit is not installed.  Aborting.\033[m"; exit 1; }
+
+echo -e "\033[33mchecking out to master branch...\033[m"
+git checkout master
+echo -e "\033[32mfetching remote repository... done!\033[m"
+
+echo -e "\033[33mfetching remote repository...\033[m"
+git fetch origin
+echo -e "\033[32mfetching remote repository... done!\033[m"
+
+echo -e "\033[33mrebasing...\033[m"
+git rebase origin/master master
+echo -e "\033[32mrebasing... done!\033[m"
